@@ -8,16 +8,14 @@
 import Foundation
 
 class GenerationsManager: ObservableObject {
-    enum Key: String {
-        case pastGenerations = "GENERATIONS"
-    }
+
     static var shared: GenerationsManager = .init()
     @Published private(set) var pastGenerations: [PastGeneration] {
         didSet { savePastGenerations() }
     }
     
-    init() {
-        guard let data = UserDefaults.standard.data(forKey: Key.pastGenerations.rawValue) else {
+    init() {        
+        guard let data = SharedDefaults.data(for: .pastGenerations) else {
             pastGenerations = []
             return
         }
@@ -27,7 +25,7 @@ class GenerationsManager: ObservableObject {
     
     private func savePastGenerations() {
         guard let data = try? JSONEncoder().encode(pastGenerations) else { return }
-        UserDefaults.standard.set(data, forKey: Key.pastGenerations.rawValue)
+        SharedDefaults.set(data: data, for: .pastGenerations)
     }
     
     func addGeneration(_ generation: PastGeneration) {

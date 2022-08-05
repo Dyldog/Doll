@@ -21,6 +21,13 @@ struct SettingsView: View {
                         .fontWeight(.bold)
                     TextField("API Key", text: $viewModel.apiKey)
                 }
+                
+                VStack(alignment: .leading, spacing: 0) {
+                    Text("Batch Size")
+                        .font(.footnote)
+                        .fontWeight(.bold)
+                    Stepper("\(viewModel.batchSize)", value: $viewModel.batchSize)
+                }
             }
             .navigationTitle("Settings")
         }

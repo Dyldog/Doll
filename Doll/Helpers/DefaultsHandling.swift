@@ -7,19 +7,19 @@
 
 import Foundation
 
-protocol DefaultsHandling {
-    associatedtype Key
+enum DefaultsKey: String, CaseIterable {
+    case apiKey = "DALLE_API_KEY"
+    case batchSize = "BATCH_SIZE"
+    case pastGenerations = "GENERATIONS"
 }
 
-extension DefaultsHandling where Key: RawRepresentable, Key.RawValue == String {
-    func getFromUserDefaults<T: Codable>(for key: Key) -> T? {
-        guard let data = UserDefaults.standard.data(forKey: key.rawValue) else { return nil }
-        return (try? JSONDecoder().decode(T.self, from: data))
-    }
+func getFromUserDefaults<T: Codable>(for key: DefaultsKey) -> T? {
+    guard let data = SharedDefaults.data(for: key) else { return nil }
+    return (try? JSONDecoder().decode(T.self, from: data))
+}
     
-    func saveToUserDefaults<T: Codable>(_ value: T, forKey key: Key) {
-        guard let data = try? JSONEncoder().encode(value) else { return }
-        UserDefaults.standard.set(data, forKey: key.rawValue)
-        UserDefaults.standard.synchronize()
-    }
+func saveToUserDefaults<T: Codable>(_ value: T, forKey key: DefaultsKey) {
+    guard let data = try? JSONEncoder().encode(value) else { return }
+    SharedDefaults.set(data: data, for: key)
+    SharedDefaults.synchronize()
 }

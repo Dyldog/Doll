@@ -13,6 +13,7 @@ class ContentViewModel: ObservableObject {
     
     @Published var images: [DallEImage] = []
     @Published var isSearching: Bool = false
+    @Published var error: String? = nil
     
     init() {
         
@@ -23,9 +24,13 @@ class ContentViewModel: ObservableObject {
         
         isSearching = true
         
-        dallE.generate(prompt: text) { images in
+        dallE.generate(prompt: text, batchSize: getFromUserDefaults(for: .batchSize) ?? 4) { images in
             DispatchQueue.main.async {
-                self.images = images ?? []
+                guard case let .success(images) = images else {
+                    return
+                }
+                
+                self.images = images
                 self.isSearching = false
                 self.savePrompt(text, images: self.images)
             }

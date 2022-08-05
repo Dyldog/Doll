@@ -10,21 +10,21 @@ import Foundation
 @propertyWrapper
 struct UserDefaultable<T: Codable> {
     
-    let key: String
+    let key: DefaultsKey
     let initial: T
     
     var wrappedValue: T {
         get {
-            guard let data = UserDefaults.standard.data(forKey: key) else { return initial }
+            guard let data = SharedDefaults.data(for: key) else { return initial }
             return (try? JSONDecoder().decode(T.self, from: data)) ?? initial
         }
         set {
             guard let data = try? JSONEncoder().encode(newValue) else { return }
-            UserDefaults.standard.set(data, forKey: key)
+            SharedDefaults.set(data: data, for: key)
         }
     }
     
-    init(wrappedValue: T, key: String) {
+    init(wrappedValue: T, key: DefaultsKey) {
         self.key = key
         self.initial = wrappedValue
     }

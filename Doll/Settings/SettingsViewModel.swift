@@ -7,20 +7,23 @@
 
 import Combine
 
-class SettingsViewModel: ObservableObject, DefaultsHandling {
-    enum Key: String {
-        case apiKey = "DALLE_API_KEY"
-    }
+class SettingsViewModel: ObservableObject {
 
     var cancellables: Set<AnyCancellable> = .init()
     
     @Published var apiKey: String = ""
+    @Published var batchSize: Int = 4
     
     init() {
         apiKey = getFromUserDefaults(for: .apiKey).mapEmpty(Secrets.defaultDallEAPIKey.rawValue)
+        batchSize = getFromUserDefaults(for: .batchSize) ?? 4
         
-        _apiKey.projectedValue.removeDuplicates().sink { [weak self] in
-            self?.saveToUserDefaults($0.mapEmpty(Secrets.defaultDallEAPIKey.rawValue), forKey: .apiKey)
+        _apiKey.projectedValue.removeDuplicates().sink {
+            saveToUserDefaults($0.mapEmpty(Secrets.defaultDallEAPIKey.rawValue), forKey: .apiKey)
+        }.store(in: &cancellables)
+        
+        _batchSize.projectedValue.removeDuplicates().sink {
+            saveToUserDefaults($0, forKey: .batchSize)
         }.store(in: &cancellables)
     }
 }

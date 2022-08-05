@@ -13,6 +13,9 @@
 		112EBEB8289CF62400C1CA43 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 112EBEB7289CF62400C1CA43 /* Preview Assets.xcassets */; };
 		112EBED2289CFC9800C1CA43 /* dalle2.py in Resources */ = {isa = PBXBuildFile; fileRef = 112EBED1289CFC9800C1CA43 /* dalle2.py */; };
 		1196A624289D440D004352E8 /* View+ResignOnDrag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196A623289D440C004352E8 /* View+ResignOnDrag.swift */; };
+		1196A627289D4D53004352E8 /* ActivityIndicatorView in Frameworks */ = {isa = PBXBuildFile; productRef = 1196A626289D4D53004352E8 /* ActivityIndicatorView */; };
+		1196A629289D53A2004352E8 /* DefaultsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196A628289D53A2004352E8 /* DefaultsStore.swift */; };
+		1196A62C289D556D004352E8 /* String+Identifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1196A62B289D556D004352E8 /* String+Identifiable.swift */; };
 		11CC4C25289D1D16009BAAA1 /* DallE.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC4C24289D1D16009BAAA1 /* DallE.swift */; };
 		11CC4C27289D2581009BAAA1 /* PreviousPromptsList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC4C26289D2581009BAAA1 /* PreviousPromptsList.swift */; };
 		11CC4C29289D2C17009BAAA1 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CC4C28289D2C17009BAAA1 /* SettingsView.swift */; };
@@ -40,6 +43,9 @@
 		112EBEB7289CF62400C1CA43 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		112EBED1289CFC9800C1CA43 /* dalle2.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; path = dalle2.py; sourceTree = "<group>"; };
 		1196A623289D440C004352E8 /* View+ResignOnDrag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ResignOnDrag.swift"; sourceTree = "<group>"; };
+		1196A628289D53A2004352E8 /* DefaultsStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsStore.swift; sourceTree = "<group>"; };
+		1196A62A289D544C004352E8 /* Doll.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Doll.entitlements; sourceTree = "<group>"; };
+		1196A62B289D556D004352E8 /* String+Identifiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Identifiable.swift"; sourceTree = "<group>"; };
 		11CC4C24289D1D16009BAAA1 /* DallE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DallE.swift; sourceTree = "<group>"; };
 		11CC4C26289D2581009BAAA1 /* PreviousPromptsList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviousPromptsList.swift; sourceTree = "<group>"; };
 		11CC4C28289D2C17009BAAA1 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -64,6 +70,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1196A627289D4D53004352E8 /* ActivityIndicatorView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,6 +97,7 @@
 		112EBEAF289CF62100C1CA43 /* Doll */ = {
 			isa = PBXGroup;
 			children = (
+				1196A62A289D544C004352E8 /* Doll.entitlements */,
 				112EBEB0289CF62100C1CA43 /* DollApp.swift */,
 				11CC4C34289D35FC009BAAA1 /* Generate */,
 				11CC4C3C289D3651009BAAA1 /* Previous */,
@@ -170,12 +178,14 @@
 			children = (
 				11CC4C2A289D3508009BAAA1 /* Secrets.swift */,
 				11CC4C41289D3693009BAAA1 /* DefaultsHandling.swift */,
+				1196A628289D53A2004352E8 /* DefaultsStore.swift */,
 				11CC4C43289D36A6009BAAA1 /* UserDefaultable.swift */,
 				11CC4C45289D380B009BAAA1 /* String+MapNil.swift */,
 				11CC4C47289D39CD009BAAA1 /* Share.swift */,
 				11CC4C49289D3EE5009BAAA1 /* String+Date.swift */,
 				11CC4C4B289D3EF3009BAAA1 /* UIImage+Temp.swift */,
 				1196A623289D440C004352E8 /* View+ResignOnDrag.swift */,
+				1196A62B289D556D004352E8 /* String+Identifiable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -197,6 +207,7 @@
 			);
 			name = Doll;
 			packageProductDependencies = (
+				1196A626289D4D53004352E8 /* ActivityIndicatorView */,
 			);
 			productName = Doll;
 			productReference = 112EBEAD289CF62100C1CA43 /* Doll.app */;
@@ -227,6 +238,7 @@
 			);
 			mainGroup = 112EBEA4289CF62100C1CA43;
 			packageReferences = (
+				1196A625289D4D53004352E8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */,
 			);
 			productRefGroup = 112EBEAE289CF62100C1CA43 /* Products */;
 			projectDirPath = "";
@@ -267,12 +279,14 @@
 				11CC4C33289D35F5009BAAA1 /* GenerateViewModel.swift in Sources */,
 				11CC4C42289D3693009BAAA1 /* DefaultsHandling.swift in Sources */,
 				11CC4C31289D35C5009BAAA1 /* Network.swift in Sources */,
+				1196A62C289D556D004352E8 /* String+Identifiable.swift in Sources */,
 				11CC4C2F289D35A8009BAAA1 /* DallEImage.swift in Sources */,
 				11CC4C3F289D3672009BAAA1 /* SettingsViewModel.swift in Sources */,
 				112EBEB1289CF62100C1CA43 /* DollApp.swift in Sources */,
 				1196A624289D440D004352E8 /* View+ResignOnDrag.swift in Sources */,
 				11CC4C27289D2581009BAAA1 /* PreviousPromptsList.swift in Sources */,
 				11CC4C3B289D364A009BAAA1 /* PreviousPromptDetailView.swift in Sources */,
+				1196A629289D53A2004352E8 /* DefaultsStore.swift in Sources */,
 				11CC4C4A289D3EE5009BAAA1 /* String+Date.swift in Sources */,
 				11CC4C25289D1D16009BAAA1 /* DallE.swift in Sources */,
 			);
@@ -400,6 +414,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Doll/Doll.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Doll/Preview Content\"";
@@ -429,6 +444,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Doll/Doll.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Doll/Preview Content\"";
@@ -475,6 +491,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		1196A625289D4D53004352E8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/ActivityIndicatorView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		1196A626289D4D53004352E8 /* ActivityIndicatorView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1196A625289D4D53004352E8 /* XCRemoteSwiftPackageReference "ActivityIndicatorView" */;
+			productName = ActivityIndicatorView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 112EBEA5289CF62100C1CA43 /* Project object */;
 }

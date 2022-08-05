@@ -14,7 +14,7 @@ struct PreviousPromptsList: View {
     var body: some View {
         NavigationView {
             List {
-                ForEach(generationsManager.pastGenerations) { generation in
+                ForEach(generationsManager.pastGenerations.reversed()) { generation in
                     NavigationLink {
                         PreviousPromptDetail(prompt: generation)
                     } label: {

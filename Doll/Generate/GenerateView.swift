@@ -12,14 +12,26 @@ struct ContentView: View {
     @State var searchText: String = ""
     @State var lastSearch: String = ""
     
+    @FocusState private var searchIsFocused: Bool
+    
     var body: some View {
         List {
             HStack {
                 TextField("Search", text: $searchText)
+                    .focused($searchIsFocused)
+                    .onSubmit {
+                        viewModel.search(searchText)
+                        searchIsFocused = false
+                    }
+                    .frame(maxHeight: .infinity)
                 Button("Search") {
                     viewModel.search(searchText)
                     lastSearch = searchText
+                    searchIsFocused = false
                 }
+            }
+            .onTapGesture {
+                searchIsFocused = true
             }
             
             if viewModel.isSearching {
@@ -31,6 +43,7 @@ struct ContentView: View {
             }
             
         }
+        .resignKeyboardOnDragGesture()
     }
 }
 
